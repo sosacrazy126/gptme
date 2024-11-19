@@ -1,0 +1,12 @@
+# Test configuration for memory demo
+openai_api_key = ""  # Will be overridden by environment variable
+model = "gpt-4"
+temperature = 0.7
+max_tokens = 2000
+
+[memory]
+enabled = true
+storage_type = "json"
+similarity_threshold = 40
+max_context_window = 5
+decay_rate = 0.0001

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GitHub Stars Fetcher</title>
+</head>
+<body>
+    <pre id="output"></pre>
+    <script>
+        async function getStars() {
+            let page = 1;
+            let allRepos = [];
+            
+            while (true) {
+                const response = await fetch(`https://api.github.com/users/sosacrazy126/starred?page=${page}&per_page=100`);
+                const repos = await response.json();
+                
+                if (repos.length === 0) break;
+                
+                const urls = repos.map(repo => repo.html_url);
+                allRepos = allRepos.concat(urls);
+                page++;
+            }
+
+            document.getElementById('output').textContent = allRepos.join('\n');
+        }
+
+        getStars();
+    </script>
+</body>
+</html>

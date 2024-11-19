@@ -31,6 +31,12 @@ typing-extensions = "*"
 platformdirs = "^4.3"
 lxml = "*"
 
+# Memory management
+faiss-cpu = "^1.7.4"  # For efficient similarity search
+networkx = "^3.2"     # For concept graph management
+scikit-learn = "^1.4.0"  # For clustering and similarity metrics
+numpy = "^1.26.0"     # Required by faiss and scikit-learn
+
 # tools
 ipython = "^8.17.2"
 bashlex = "^0.18"
@@ -48,12 +54,12 @@ multiprocessing-logging = "^0.3.4"
 # datascience essentials
 matplotlib = {version = "*", optional=true}
 pandas = {version = "*", optional=true}
-numpy = {version = "*", optional=true}
 pillow = {version = "*", optional=true}
 
 # server
 flask = {version = "^3.0", optional=true}
 flask-cors = {version = "^4.0", optional=true}
+memoripy = "^0.1.0"
 
 [tool.poetry.group.dev.dependencies]
 # lint
@@ -143,15 +149,6 @@ exclude_also = [
     "if __name__ == .__main__.:",
     "if TYPE_CHECKING:",
 ]
-
-
-# TODO: migrate to PEP 621 once supported by poetry
-#[project]
-#name = "gptme"
-#dynamic = ["version"]
-#
-#[tool.setuptools.dynamic]
-#version = {attr = "mymodule.__version__"}
 
 [build-system]
 requires = ["poetry-core"]
